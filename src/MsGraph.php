@@ -217,13 +217,7 @@ class MsGraph
 
     public function getTokenData(?string $id = null): ?MsGraphToken
     {
-        $id = $this->getUserId($id);
-
-        if ($id === null) {
-            return null;
-        }
-
-        return MsGraphToken::where('user_id', $id)->where('refresh_token', '<>', '')->first();
+        return MsGraphToken::where('refresh_token', '<>', '')->first();
     }
 
     public function storeToken(string $access_token, string $refresh_token, string $expires, string $id, string $email): MsGraphToken
